@@ -52,7 +52,7 @@ int main(int argc, char* argv[]){
     for (int i = 0; i < 5; i++){
         for (int j = 0; j < 5; j++){
             int* res;
-            if (pthread_join(threads[i*5 + j], &res)) {
+            if (pthread_join(threads[i*5 + j], (void*)&res)) {
                 perror(NULL);
                 return errno;
             }
