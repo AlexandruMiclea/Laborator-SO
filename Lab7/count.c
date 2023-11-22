@@ -14,8 +14,8 @@ pthread_t* threads;
 int decrease_count(int count){
     pthread_mutex_lock(&mtx);
     if (available_resources < count){
-        printf("ERROR: Tried to get %d resources %d remaining\n", count, available_resources);
-        pthread_mutex_unlock(&mtx);        
+        //printf("ERROR: Tried to get %d resources %d remaining\n", count, available_resources);
+        pthread_mutex_unlock(&mtx);
         return -1;
     }
     else {
@@ -37,11 +37,12 @@ int increase_count(int count){
 void* reserve(void* arg){
     int val = *(int*)arg;
 
-    if (val > available_resources) return NULL;
-    else{
-        decrease_count(val);
-        increase_count(val);
+    int aux = -1;
+    while (aux != 0){
+        aux = decrease_count(val);
     }
+    sleep(1);
+    increase_count(val);
     return NULL;
 }
 
