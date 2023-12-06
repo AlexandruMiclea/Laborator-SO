@@ -5,7 +5,7 @@
 #include <pthread.h>
 #include <errno.h>
 
-#define MAX_RESOURCES 50
+#define MAX_RESOURCES 10
 int available_resources = MAX_RESOURCES;
 
 pthread_mutex_t mtx;

@@ -46,7 +46,7 @@ void init(int n) {
     printf("NRTHRS=%d\n", n);
 
     thread_no = n;
-    int cp_tn = thread_no;
+    int cp_tn = n;
     threads = (pthread_t *)malloc(cp_tn * sizeof(pthread_t));
     for (int i = 0; i < cp_tn; i++){
         int* id = malloc(sizeof(int));
